@@ -1,0 +1,63 @@
+package com.example;
+
+import org.junit.Before;
+import org.junit.After;
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+// A simple Calculator class
+class Calculator {
+    public int add(int a, int b) {
+        return a + b;
+    }
+    public int subtract(int a, int b) {
+        return a - b;
+    }
+}
+
+public class CalculatorTest {
+
+    private Calculator calculator;
+
+    // Setup method (runs before each test)
+    @Before
+    public void setUp() {
+        calculator = new Calculator();
+        System.out.println("Setup: Calculator initialized");
+    }
+
+    // Teardown method (runs after each test)
+    @After
+    public void tearDown() {
+        calculator = null;
+        System.out.println("Teardown: Calculator destroyed");
+    }
+
+    // AAA Pattern: Test addition
+    @Test
+    public void testAddition() {
+        // Arrange
+        int a = 10;
+        int b = 5;
+
+        // Act
+        int result = calculator.add(a, b);
+
+        // Assert
+        assertEquals(15, result);
+    }
+
+    // AAA Pattern: Test subtraction
+    @Test
+    public void testSubtraction() {
+        // Arrange
+        int a = 10;
+        int b = 3;
+
+        // Act
+        int result = calculator.subtract(a, b);
+
+        // Assert
+        assertEquals(7, result);
+    }
+}
